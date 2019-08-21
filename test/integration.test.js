@@ -16,3 +16,15 @@ it("gets the recipe by id endpoint", async done => {
     expect(response.body.message).toBe(testRecipe[0]);
     done();
 });
+
+it("gets the recipe by cuisine endpoint", async done => {
+    const response = await req.get("/recipe/cuisine/mexican/?page=1");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(
+        expect.objectContaining({
+            data: expect.any(Array),
+            paginateOptions: expect.any(Object)
+        })
+    );
+    done();
+});

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const { readCSVToJSON } = require("./utils");
+const { readCSVToJSON, paginate } = require("./utils");
 const FILE_PATH = "./assets/recipe-data.csv";
 
 // parse application/json
@@ -26,6 +26,27 @@ app.get("/recipe/:id", async (req, res) => {
         const parsedResults = await readCSVToJSON(FILE_PATH);
         const requestedRecipe = parsedResults[id - 1];
         res.json(requestedRecipe);
+    } catch (err) {
+        throw err;
+    }
+});
+
+
+app.get("/recipe/cuisine/:cuisine/", async (req, res) => {
+    try {
+        const cuisine = req.params.cuisine
+        const parsedResults = await readCSVToJSON(FILE_PATH);
+        const results = parsedResults
+            .filter(obj => obj.recipe_cuisine === cuisine)
+            .map(recipe => ({
+                id: recipe.id,
+                title: recipe.title,
+                description: recipe.marketing_description
+            }));
+
+        const page = req.query.page;
+        const paginateResults = paginate(results, page);
+        res.json(paginateResults);
     } catch (err) {
         throw err;
     }
