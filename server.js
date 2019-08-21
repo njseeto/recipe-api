@@ -59,10 +59,30 @@ app.get("/recipe/cuisine/:cuisine/", async (req, res) => {
                 title: recipe.title,
                 description: recipe.marketing_description
             }));
-
         const page = req.query.page;
         const paginateResults = paginate(results, page);
         res.json(paginateResults);
+    } catch (err) {
+        throw err;
+    }
+});
+
+app.patch("/recipe/:id", async (req, res) => {
+    try {
+        if (req.params.id > 17)
+            return res
+                .status(400)
+                .send({ error: "invalid id, please use numbers 1 to 17" });
+        const id = req.params.id;
+        const parsedResults = await readCSVToJSON(FILE_PATH);
+        const matchedRecipe = parsedResults.find(result => result.id === id);
+        const newResult = {
+            ...matchedRecipe,
+            ...req.body
+        };
+
+        console.log(req.body)
+        res.json(newResult);
     } catch (err) {
         throw err;
     }
