@@ -31,10 +31,26 @@ app.get("/recipe/:id", async (req, res) => {
     }
 });
 
-
 app.get("/recipe/cuisine/:cuisine/", async (req, res) => {
     try {
-        const cuisine = req.params.cuisine
+        const cuisine = req.params.cuisine;
+        switch (cuisine) {
+            case "asian":
+                break;
+            case "british":
+                break;
+            case "italian":
+                break;
+            case "mexican":
+                break;
+            case "mediterranean":
+                break;
+            default:
+                res.status(400).send({
+                    error:
+                        "invalid cuisine, please use one of asian, italian, british, mediterranean or mexican"
+                });
+        }
         const parsedResults = await readCSVToJSON(FILE_PATH);
         const results = parsedResults
             .filter(obj => obj.recipe_cuisine === cuisine)
