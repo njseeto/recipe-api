@@ -7,15 +7,6 @@ const FILE_PATH = "./assets/recipe-data.csv";
 // parse application/json
 app.use(bodyParser.json());
 
-app.all('*', function (req, res) {
-    throw new Error("Bad request")
-})
-app.use(function (e, req, res, next) {
-    if (e.message === "Bad request") {
-        res.status(400).json({ error: { msg: e.message, status: 400 } });
-    }
-});
-
 app.get("/", async (req, res) => {
     try {
         const parsedResults = await readCSVToJSON(FILE_PATH);
@@ -94,6 +85,15 @@ app.patch("/recipe/:id", async (req, res) => {
         res.json(newResult);
     } catch (err) {
         throw err;
+    }
+});
+
+app.all('*', function (req, res) {
+    throw new Error("Bad request")
+})
+app.use(function (e, req, res, next) {
+    if (e.message === "Bad request") {
+        res.status(400).json({ error: { msg: e.message, status: 400 } });
     }
 });
 
