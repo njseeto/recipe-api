@@ -43,7 +43,7 @@ Note IDs are from 1 to 17, inclusive.
 
 `GET`
 
-`curl 'http://localhost:3000/recipe/:id`
+`curl 'http://localhost:3000/recipe/:id'`
 
 To get a recipe by its CUISINE:
 
@@ -55,7 +55,7 @@ Note to see pagination use british cuisine as there are 11 recipes that fit this
 
 `GET`
 
-`curl 'http://localhost:3000/recipe/cuisine/:cuisine/?page=1`
+`curl 'http://localhost:3000/recipe/cuisine/:cuisine/?page=1'`
 
 To UPDATE recipe fields:
 
@@ -96,7 +96,7 @@ The keys that can be updated include:
 
 - Better unit testing - mocking the csv to json library for example.
 - A function that overwrites the csv file with the updated recipe fields following a successful patch request.
-- Better error handling and testing around error handling.
+- Better error handling and testing around error handling. For example handling letters and characters being passed in the urls rather than numbers for the get recipe by ID route.
 - Add extra routes, POST to add new recipes and DELETE to delete recipes
 - Did a bit more research into csv to JSON parser libraries
 - Better setting out of application, such as having router and handler files.
