@@ -17,9 +17,9 @@ This application runs in Node. Please ensure you have Node installed on your mac
 
 ## How to run this application
 
-Clone the repo
+Clone the repo and cd into the project.
 
-Then install npm dependencies by running:
+Install npm dependencies by running:
 
 `npm i`
 
@@ -27,7 +27,7 @@ To run the server, from the root run:
 
 `npm run start`
 
-The server should start running on port 3000.
+The server should start running on port 3000 and Nodemon should watch the server.
 
 ### How to run tests
 
