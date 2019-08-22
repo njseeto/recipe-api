@@ -99,6 +99,7 @@ The keys that can be updated include:
 - Better error handling and testing around error handling.
 - Add extra routes, POST to add new recipes and DELETE to delete recipes
 - Did a bit more research into csv to JSON parser libraries
+- Better setting out of application, such as having router and handler files.
 
 ### Other things
-- No test for the patch route - unable to find an elegant solution for testing this route with Supertest. This route was tested via [Insomia](https://insomnia.rest/)
+- Unfortunately there is no test for the patch route - I was unable to find an elegant solution for testing this route with Supertest. This route was tested via [Insomia](https://insomnia.rest/)
