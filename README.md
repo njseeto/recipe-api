@@ -13,13 +13,13 @@ The API allows the user to do 3 things:
 
 ## Requirements
 
-Node, Express, nodemon
+This application runs in Node. Please ensure you have Node installed on your machine.
 
 ## How to run this application
 
 Clone the repo
 
-And then:
+Then install npm dependencies by running:
 
 `npm i`
 
@@ -34,7 +34,7 @@ The server should start running on port 3000.
 This application uses jest and supertest for testing.
 To run the tests, from the root run the command:
 
-`npm run tests`
+`npm run test`
 
 ## What example requests can I make?
 
@@ -96,9 +96,12 @@ The keys that can be updated include:
 
 - Better unit testing - mocking the csv to json library for example.
 - A function that overwrites the csv file with the updated recipe fields following a successful patch request.
-- Better error handling and testing around error handling. For example handling letters and characters being passed in the urls rather than numbers for the get recipe by ID route.
-- Add extra routes, POST to add new recipes and DELETE to delete recipes
-- Did a bit more research into csv to JSON parser libraries
+- Better error handling and testing around error handling. Some improvements could include:
+    - Handling valid characters being passed in the urls require an ID/string.
+    - Check keys are valid for the patch request.
+
+- Add extra routes, POST to add new recipes and DELETE to delete recipes.
+- Could have done a bit more research into csv to JSON parser libraries available.
 - Better setting out of application, such as having router and handler files.
 
 ### Other things
